@@ -25,16 +25,29 @@ namespace ProjectTicTacToe
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1.setPlayerNames(textBox1.Text, textBox2.Text);
-            this.Close();
+            if ((textBox1.Text == "") && (textBox2.Text == ""))
+            {
+                Form1.setPlayerNames("Player 1", "Player 2");
+                this.Close();
+            }
+            else
+            {
+                Form1.setPlayerNames(textBox1.Text, textBox2.Text);
+                this.Close();
+            }
         }
-
-    
-
-        private void textbox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            if (e.KeyChar.ToString() == "\r")
-                button1.PerformClick();
+            if(textBox1.Text == "")
+            {
+                Form1.setPlayerNames("Player", "Computer");
+                this.Close();
+            }
+            else
+            {
+                Form1.setPlayerNames(textBox1.Text, "Computer");
+                this.Close();
+            }
         }
     }
 }
