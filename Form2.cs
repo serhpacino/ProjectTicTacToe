@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjectTicTacToe
 {
+    /// <summary>
+    /// Klasa reprezentująca okno wyboru przeciwnika. 
+    /// </summary>
     public partial class Form2 : Form
     {
         public Form2()
@@ -17,12 +20,13 @@ namespace ProjectTicTacToe
             InitializeComponent();
         }
 
-       
         private void Form2_Load(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// Funkcja umożliwia zmianę nazwy gracza lub obu graczy. 
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             if ((textBox1.Text == "") && (textBox2.Text == ""))
@@ -36,6 +40,9 @@ namespace ProjectTicTacToe
                 this.Close();
             }
         }
+        /// <summary>
+        /// Funkcja umożliwia nam zagranie z komputerem.
+        /// </summary>
         private void button2_Click(object sender, EventArgs e)
         {
             if(textBox1.Text == "")

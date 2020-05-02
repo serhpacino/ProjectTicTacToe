@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjectTicTacToe
 {
+    /// <summary>
+    /// Klasa , która zawiera wszystkie metody które są realizowane w programie.
+    /// </summary>
     public partial class Form1 : Form
     {
 
@@ -22,21 +25,38 @@ namespace ProjectTicTacToe
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Funkcja umożliwia wpisanie nazwy jednego lub dwóch graczy.
+        /// </summary>
+        /// <param name="n1">Pierwszy gracz.</param>
+        /// <param name="n2">Drugi gracz.</param>
         public static void setPlayerNames(String n1, String n2)
         {
             firstplayer = n1;
             secondplayer = n2; 
         }
+        /// <summary>
+        /// Funkcja wyświetła informację o twórcach aplikacji po naciśnięciu przycisku About.
+        /// </summary>
+        /// <param name="sender">Parametr , który odwoluje się do obiektu.</param>
+        /// <param name="e">Parametr zawierający informację o wydarzeniu(wyświetlienie informacji).</param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This is project created by Serhii Chernov and Maciej Wosko","Tic Tac Toe About");
         }
-
+        /// <summary>
+        /// Funkcja umożliwiająca wyjście z gry po naciśnięciu przycisku Exit Game. 
+        /// </summary>
+        /// <param name="sender">Parametr , który odwoluje się do obiektu.</param>
+        /// <param name="e">Parametr zawierający informację o wydarzeniu(wyświetlienie informacji).</param>
         private void exitGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        /// <summary>
+        /// Funkcja umożliwiająca wstawienie znaku "X" lub "O", po naciśnięciu przycisku, dodatkowo uniemożliwia ponowne naciśnięcie przycisku, w którym został już wstawiony symbol.
+        /// Jeżeli wybierzemy gre z komputerem i skonczyliśmy turę to nastąpi tura komputera.
+        /// </summary>
         private void button_click(object sender, EventArgs e)
         {
                 Button b = (Button)sender;
@@ -56,7 +76,10 @@ namespace ProjectTicTacToe
                 computer_Turn();
             }
         }
-
+        /// <summary>
+        /// Funkcja sprawia , że komputer sprawdza czy gracz może wygrać w następnej turze , jeśli może wygrać to blokuje mu wygraną poprzez wstawienie swojego symbolu.
+        /// Jeżeli gracz ustawi swój symbol w rogu to komputer również ustawi swój symbol w dowolnym pustym rogu.
+        /// </summary>
         private void computer_Turn()
         {
             Button move = null;
@@ -76,7 +99,10 @@ namespace ProjectTicTacToe
             }
             move.PerformClick();
         }
-
+        /// <summary>
+        /// Metoda sprawia , że komputer szuka wolnego miejsca by wstawić swój symbol.
+        /// </summary>
+        /// <returns>b jeżeli znajdzie wolne miejsce , w przeciwnym razie zwróci wartość null.</returns>
         private Button checkFreeSpace()
         {
             Console.WriteLine("Checking free space");
@@ -92,7 +118,10 @@ namespace ProjectTicTacToe
             }
             return null;
         }
-
+        /// <summary>
+        /// Metoda sprawdza dostępność pól znajdujących się po rogach .
+        /// </summary>
+        /// <returns>button jeżeli występuje puste miejsce, w przeciwnym razie zwróci wartość null.</returns>
         private Button checkCorner()
         {
             Console.WriteLine("Checking corner");
@@ -147,7 +176,11 @@ namespace ProjectTicTacToe
 
             return null;
         }
-
+        /// <summary>
+        /// Sprawdzenie czy użytkownik zaznaczył swój symbol w danym polu , komputer analizuje te pola ,aby zablokować gracza.
+        /// </summary>
+        /// <param name="mark">Przycisk ktory został zajęty przez symbol.</param>
+        /// <returns>button jeżeli komputer może zablokować gracza, w przeciwnym razie zwróci wartość null.</returns>
         private Button checkWinBlock(string mark)
         {
             Console.WriteLine("Checking win or block:  " + mark);
@@ -212,6 +245,9 @@ namespace ProjectTicTacToe
 
             return null;
         }
+        /// <summary>
+        /// Funkcja sprawdza kto wygrał daną rundę lub weryfikuje czy zaistniał remis.
+        /// </summary>
         private void checkCurrentWinner()
         {
             bool current_winner = false;
@@ -279,6 +315,9 @@ namespace ProjectTicTacToe
                 }
             }
         }//end checkCurrentWinner
+        /// <summary>
+        /// Funkcja naprawiająca wykrywanie przycisków z Menu jako przyciski ,w których możemy wstawiać nasz symbol. 
+        /// </summary>
         private void disableButtons()
         {
                 foreach (Control c in Controls)
@@ -293,7 +332,9 @@ namespace ProjectTicTacToe
             //try,  we navigating that , because menu strip is not a button
             
         }
-
+        /// <summary>
+        /// Funkcja umożliwia nam po kliknięciu przycisku "New Game" przejść do nowej gry. 
+        /// </summary>
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             turn = true;
@@ -311,7 +352,9 @@ namespace ProjectTicTacToe
             //try,  we navigating that , because menu strip is not a button
            
         }
-
+        /// <summary>
+        /// Funkcja sygnalizuje nam możliwość wstawienie naszego symbolu poprzez podświetlenie pustego pola. 
+        /// </summary>
         private void button_Enter(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -323,7 +366,9 @@ namespace ProjectTicTacToe
                     b.Text = "O";
             }
         }
-
+        /// <summary>
+        /// Funkcja kasuje podświetlenie pustego miejsca, po wyjechaniu kursorem za jego obszar.  
+        /// </summary>
         private void button_Leave(object sender, EventArgs e)
         {
             Button b = (Button)sender;
@@ -332,14 +377,18 @@ namespace ProjectTicTacToe
                 b.Text = "";
             }
         }
-
+        /// <summary>
+        /// Funkcja umożliwia zresetowania statystyk poprzez naciśnięcie przycisku "Reset Results".
+        /// </summary>
         private void resetResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             x_result.Text = "0";
             o_result.Text = "0";
             draw_result.Text = "0";
         }
-
+        /// <summary>
+        /// Funkcja umożliwia wyświetlenie ekranu wyboru przeciwnika.
+        /// </summary>
         private void Form1_Load(object sender, EventArgs e)
         {
             Form f2 = new Form2();
