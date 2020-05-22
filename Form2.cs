@@ -20,14 +20,14 @@ namespace ProjectTicTacToe
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        public void Form2_Load(object sender, EventArgs e)
         {
 
         }
         /// <summary>
         /// Funkcja umożliwia zmianę nazwy gracza lub obu graczy. 
         /// </summary>
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             if ((textBox1.Text == "") && (textBox2.Text == ""))
             {
@@ -43,7 +43,7 @@ namespace ProjectTicTacToe
         /// <summary>
         /// Funkcja umożliwia nam zagranie z komputerem.
         /// </summary>
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
             if(textBox1.Text == "")
             {

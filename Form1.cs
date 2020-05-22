@@ -15,10 +15,10 @@ namespace ProjectTicTacToe
     /// </summary>
     public partial class Form1 : Form
     {
-
-        bool turn = true; // True is X turn and O is false turn
-        bool against_computer = false;
-        int cout_turn = 0;
+       public bool current_winner;
+       public bool turn = true; 
+       public bool against_computer = false;
+       public int cout_turn = 0;
         static String firstplayer, secondplayer;
         public Form1()
         {
@@ -40,7 +40,7 @@ namespace ProjectTicTacToe
         /// </summary>
         /// <param name="sender">Parametr , który odwoluje się do obiektu.</param>
         /// <param name="e">Parametr zawierający informację o wydarzeniu(wyświetlienie informacji).</param>
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        public void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This is project created by Serhii Chernov and Maciej Wosko","Tic Tac Toe About");
         }
@@ -49,7 +49,7 @@ namespace ProjectTicTacToe
         /// </summary>
         /// <param name="sender">Parametr , który odwoluje się do obiektu.</param>
         /// <param name="e">Parametr zawierający informację o wydarzeniu(wyświetlienie informacji).</param>
-        private void exitGameToolStripMenuItem_Click(object sender, EventArgs e)
+        public void exitGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -57,7 +57,7 @@ namespace ProjectTicTacToe
         /// Funkcja umożliwiająca wstawienie znaku "X" lub "O", po naciśnięciu przycisku, dodatkowo uniemożliwia ponowne naciśnięcie przycisku, w którym został już wstawiony symbol.
         /// Jeżeli wybierzemy gre z komputerem i skonczyliśmy turę to nastąpi tura komputera.
         /// </summary>
-        private void button_click(object sender, EventArgs e)
+        public void button_click(object sender, EventArgs e)
         {
                 Button b = (Button)sender;
                 if (turn)
@@ -80,14 +80,14 @@ namespace ProjectTicTacToe
         /// Funkcja sprawia , że komputer sprawdza czy gracz może wygrać w następnej turze , jeśli może wygrać to blokuje mu wygraną poprzez wstawienie swojego symbolu.
         /// Jeżeli gracz ustawi swój symbol w rogu to komputer również ustawi swój symbol w dowolnym pustym rogu.
         /// </summary>
-        private void computer_Turn()
+        public void computer_Turn()
         {
-            Button move = null;
-            //Tic tac toe opportunities
-            move = checkWinBlock("O");//Look for win
+          Button move = null;
+            
+            move = checkWinBlock("O");
             if (move == null)
             {
-                move = checkWinBlock("X");//Look for blocking
+                move = checkWinBlock("X");
                 if (move == null)
                 {
                     move = checkCorner();
@@ -103,7 +103,7 @@ namespace ProjectTicTacToe
         /// Metoda sprawia , że komputer szuka wolnego miejsca by wstawić swój symbol.
         /// </summary>
         /// <returns>b jeżeli znajdzie wolne miejsce , w przeciwnym razie zwróci wartość null.</returns>
-        private Button checkFreeSpace()
+        public Button checkFreeSpace()
         {
             Console.WriteLine("Checking free space");
             Button b = null;
@@ -122,7 +122,7 @@ namespace ProjectTicTacToe
         /// Metoda sprawdza dostępność pól znajdujących się po rogach .
         /// </summary>
         /// <returns>button jeżeli występuje puste miejsce, w przeciwnym razie zwróci wartość null.</returns>
-        private Button checkCorner()
+        public Button checkCorner()
         {
             Console.WriteLine("Checking corner");
             if (button1.Text == "O")
@@ -181,10 +181,10 @@ namespace ProjectTicTacToe
         /// </summary>
         /// <param name="mark">Przycisk ktory został zajęty przez symbol.</param>
         /// <returns>button jeżeli komputer może zablokować gracza, w przeciwnym razie zwróci wartość null.</returns>
-        private Button checkWinBlock(string mark)
+        public Button checkWinBlock(string mark)
         {
             Console.WriteLine("Checking win or block:  " + mark);
-            //Horizontal
+            
             if ((button1.Text == mark) && (button2.Text == mark) && (button3.Text == ""))
                 return button3;
             if ((button2.Text == mark) && (button3.Text == mark) && (button1.Text == ""))
@@ -206,7 +206,7 @@ namespace ProjectTicTacToe
             if ((button7.Text == mark) && (button9.Text == mark) && (button8.Text == ""))
                 return button8;
 
-            //Vertical
+            
             if ((button1.Text == mark) && (button4.Text == mark) && (button7.Text == ""))
                 return button7;
             if ((button4.Text == mark) && (button7.Text == mark) && (button1.Text == ""))
@@ -228,7 +228,7 @@ namespace ProjectTicTacToe
             if ((button3.Text == mark) && (button9.Text == mark) && (button6.Text == ""))
                 return button6;
 
-            //Diagonal
+            
             if ((button1.Text == mark) && (button5.Text == mark) && (button9.Text == ""))
                 return button9;
             if ((button5.Text == mark) && (button9.Text == mark) && (button1.Text == ""))
@@ -248,10 +248,10 @@ namespace ProjectTicTacToe
         /// <summary>
         /// Funkcja sprawdza kto wygrał daną rundę lub weryfikuje czy zaistniał remis.
         /// </summary>
-        private void checkCurrentWinner()
+        public void checkCurrentWinner()
         {
-            bool current_winner = false;
-            //horizontal checks
+            current_winner = false;
+            
             if((button1.Text== button2.Text) && (button2.Text == button3.Text)&&(!button1.Enabled))
             {
                 current_winner = true;
@@ -264,7 +264,7 @@ namespace ProjectTicTacToe
             {
                 current_winner = true;
             }
-            //vertical checks
+            
             else if ((button1.Text == button4.Text) && (button4.Text == button7.Text) && (!button1.Enabled))
             {
                 current_winner = true;
@@ -277,7 +277,7 @@ namespace ProjectTicTacToe
             {
                 current_winner = true;
             }
-            //diagonal checks
+            
             else if ((button1.Text == button5.Text) && (button5.Text == button9.Text) && (!button1.Enabled))
             {
                 current_winner = true;
@@ -304,7 +304,7 @@ namespace ProjectTicTacToe
                 }
 
                 MessageBox.Show(winner + " wins","Hooray");
-            }//end if
+            }
             else
             {
                 if (cout_turn == 9)
@@ -314,11 +314,11 @@ namespace ProjectTicTacToe
                     newGameToolStripMenuItem.PerformClick();
                 }
             }
-        }//end checkCurrentWinner
+        }
         /// <summary>
         /// Funkcja naprawiająca wykrywanie przycisków z Menu jako przyciski ,w których możemy wstawiać nasz symbol. 
         /// </summary>
-        private void disableButtons()
+        public void disableButtons()
         {
                 foreach (Control c in Controls)
                 {
@@ -328,14 +328,14 @@ namespace ProjectTicTacToe
                         b.Enabled = false;
                     }
                     catch { }
-                }//end foreach
-            //try,  we navigating that , because menu strip is not a button
+                }
+            
             
         }
         /// <summary>
         /// Funkcja umożliwia nam po kliknięciu przycisku "New Game" przejść do nowej gry. 
         /// </summary>
-        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        public void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             turn = true;
             cout_turn = 0;
@@ -348,14 +348,14 @@ namespace ProjectTicTacToe
                         b.Text = "";
                     }
                     catch { }
-                }//end foreach
-            //try,  we navigating that , because menu strip is not a button
+                }
+          
            
         }
         /// <summary>
         /// Funkcja sygnalizuje nam możliwość wstawienie naszego symbolu poprzez podświetlenie pustego pola. 
         /// </summary>
-        private void button_Enter(object sender, EventArgs e)
+        public void button_Enter(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             if (b.Enabled)
@@ -369,7 +369,7 @@ namespace ProjectTicTacToe
         /// <summary>
         /// Funkcja kasuje podświetlenie pustego miejsca, po wyjechaniu kursorem za jego obszar.  
         /// </summary>
-        private void button_Leave(object sender, EventArgs e)
+        public void button_Leave(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             if(b.Enabled)
@@ -380,7 +380,7 @@ namespace ProjectTicTacToe
         /// <summary>
         /// Funkcja umożliwia zresetowania statystyk poprzez naciśnięcie przycisku "Reset Results".
         /// </summary>
-        private void resetResultsToolStripMenuItem_Click(object sender, EventArgs e)
+        public void resetResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             x_result.Text = "0";
             o_result.Text = "0";
@@ -389,7 +389,7 @@ namespace ProjectTicTacToe
         /// <summary>
         /// Funkcja umożliwia wyświetlenie ekranu wyboru przeciwnika.
         /// </summary>
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
             Form f2 = new Form2();
             f2.ShowDialog();

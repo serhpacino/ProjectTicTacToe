@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,6 @@
             this.x_result = new System.Windows.Forms.Label();
             this.draw_result = new System.Windows.Forms.Label();
             this.o_result = new System.Windows.Forms.Label();
-            this.resetResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,14 +78,21 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
+            // 
+            // resetResultsToolStripMenuItem
+            // 
+            this.resetResultsToolStripMenuItem.Name = "resetResultsToolStripMenuItem";
+            this.resetResultsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.resetResultsToolStripMenuItem.Text = "Reset Results";
+            this.resetResultsToolStripMenuItem.Click += new System.EventHandler(this.resetResultsToolStripMenuItem_Click);
             // 
             // exitGameToolStripMenuItem
             // 
             this.exitGameToolStripMenuItem.Name = "exitGameToolStripMenuItem";
-            this.exitGameToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.exitGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitGameToolStripMenuItem.Text = "Exit Game";
             this.exitGameToolStripMenuItem.Click += new System.EventHandler(this.exitGameToolStripMenuItem_Click);
             // 
@@ -94,7 +101,7 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -249,7 +256,7 @@
             this.x_result.ForeColor = System.Drawing.Color.OrangeRed;
             this.x_result.Location = new System.Drawing.Point(54, 473);
             this.x_result.Name = "x_result";
-            this.x_result.Size = new System.Drawing.Size(36, 42);
+            this.x_result.Size = new System.Drawing.Size(36, 41);
             this.x_result.TabIndex = 13;
             this.x_result.Text = "0";
             // 
@@ -260,7 +267,7 @@
             this.draw_result.ForeColor = System.Drawing.Color.LimeGreen;
             this.draw_result.Location = new System.Drawing.Point(203, 473);
             this.draw_result.Name = "draw_result";
-            this.draw_result.Size = new System.Drawing.Size(36, 42);
+            this.draw_result.Size = new System.Drawing.Size(36, 41);
             this.draw_result.TabIndex = 14;
             this.draw_result.Text = "0";
             // 
@@ -271,16 +278,9 @@
             this.o_result.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.o_result.Location = new System.Drawing.Point(372, 473);
             this.o_result.Name = "o_result";
-            this.o_result.Size = new System.Drawing.Size(36, 42);
+            this.o_result.Size = new System.Drawing.Size(36, 41);
             this.o_result.TabIndex = 15;
             this.o_result.Text = "0";
-            // 
-            // resetResultsToolStripMenuItem
-            // 
-            this.resetResultsToolStripMenuItem.Name = "resetResultsToolStripMenuItem";
-            this.resetResultsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.resetResultsToolStripMenuItem.Text = "Reset Results";
-            this.resetResultsToolStripMenuItem.Click += new System.EventHandler(this.resetResultsToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -317,29 +317,28 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label x_result;
-        private System.Windows.Forms.Label draw_result;
-        private System.Windows.Forms.Label o_result;
-        private System.Windows.Forms.ToolStripMenuItem resetResultsToolStripMenuItem;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Button button7;
+        public System.Windows.Forms.Button button8;
+        public System.Windows.Forms.Button button9;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label x_result;
+        public System.Windows.Forms.Label draw_result;
+        public System.Windows.Forms.Label o_result;
+        public System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem resetResultsToolStripMenuItem;
     }
 }
 
